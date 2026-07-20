@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETIKS — Ekstra TIK Smandagiri</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='62' cy='20' r='14' fill='%23E4FF2E' stroke='%2312121A' stroke-width='2'/%3E%3Cpath d='M46 34 H62 V56 H80 V72 H62 V86 C62 96 74 98 82 90' fill='none' stroke='%2312121A' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#E4FF2E;
+    --red:#FF3B3B;
+    --cyan:#17E8E0;
+    --blue:#2A2AD6;
+    --ink:#12121A;
+    --paper:#FAFAF5;
+    --paper-dim:#F0EFE4;
+    --line:#12121A22;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk', sans-serif;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    opacity:.6;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper)e6;
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1080px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.1rem;}
+  .brand svg{width:26px; height:26px; flex-shrink:0;}
+  .navlinks{display:flex; align-items:center; gap:28px; font-size:.92rem; font-weight:500;}
+  .navlinks a{text-decoration:none; opacity:.75; transition:opacity .15s;}
+  .navlinks a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--ink); color:var(--paper);
+    padding:9px 18px; border-radius:100px;
+    font-weight:600; font-size:.88rem; text-decoration:none;
+    transition:transform .15s;
+    display:inline-block;
+  }
+  .nav-cta:hover{transform:translateY(-1px);}
+  @media (max-width:640px){
+    .navlinks a:not(.nav-cta){display:none;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:110px 28px 90px;
+    max-width:1080px; margin:0 auto;
+    text-align:center;
+    overflow:hidden;
+  }
+  .accent-orb{
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .orb-yellow{
+    width:150px; height:150px; background:var(--yellow);
+    top:0px; right:0px;
+    animation:drift 9s ease-in-out infinite;
+  }
+  .orb-yellow::after{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:0 0 0 100%;
+    background:var(--blue);
+    clip-path: path('M75 0 L150 0 L150 75 A75 75 0 0 0 75 0 Z');
+  }
+  .orb-red{
+    width:120px; height:120px; background:var(--red);
+    bottom:10px; left:-10px;
+    animation:drift 11s ease-in-out infinite reverse;
+  }
+  .orb-red::after{
+    content:"";
+    position:absolute; inset:0;
+    background:var(--cyan);
+    clip-path: path('M60 0 A60 60 0 0 0 0 60 L60 60 Z');
+  }
+  @keyframes drift{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(14px);}
+  }
+  .badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    border:2px solid var(--ink);
+    border-radius:26px;
+    padding:26px 56px;
+    margin-bottom:34px;
+    position:relative;
+  }
+  .badge .display{
+    font-size:clamp(3.2rem, 9vw, 6.2rem);
+    font-weight:700;
+    letter-spacing:-.02em;
+    line-height:1;
+  }
+  .badge .dot-t{
+    display:inline-block;
+    width:.18em; height:.18em;
+    background:var(--yellow);
+    border:2px solid var(--ink);
+    border-radius:50%;
+    margin:0 .02em -0.62em .02em;
+    vertical-align:top;
+    position:relative;
+    top:-.05em;
+  }
+  .hero h1.tagline{
+    font-size:clamp(1.4rem, 3.2vw, 2rem);
+    font-weight:600;
+    max-width:640px;
+    margin:0 auto 16px;
+  }
+  .hero p.sub{
+    max-width:520px; margin:0 auto 36px;
+    color:var(--ink); opacity:.72;
+    font-size:1.02rem;
+  }
+  .cta-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--ink); color:var(--paper);
+    padding:15px 32px; border-radius:100px;
+    font-weight:600; font-size:1rem; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s, background .15s;
+  }
+  .btn-primary:hover{transform:translateY(-2px); background:var(--blue);}
+  .btn-secondary{
+    background:transparent; color:var(--ink);
+    padding:15px 32px; border-radius:100px;
+    border:2px solid var(--ink);
+    font-weight:600; font-size:1rem; text-decoration:none;
+    transition:background .15s, color .15s;
+  }
+  .btn-secondary:hover{background:var(--ink); color:var(--paper);}
+
+  /* ---------- sections ---------- */
+  section{padding:80px 28px;}
+  section.alt{background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{max-width:1080px; margin:0 auto 44px;}
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.3rem); font-weight:700; margin-top:8px;}
+
+  .about-grid{
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr; gap:48px;
+    align-items:start;
+  }
+  .about-grid p{font-size:1.06rem; opacity:.82;}
+  .stat-row{display:flex; flex-direction:column; gap:22px;}
+  .stat{border-left:3px solid var(--yellow); padding-left:16px;}
+  .stat b{display:block; font-family:'Space Grotesk',sans-serif; font-size:1.8rem;}
+  .stat span{font-size:.9rem; opacity:.65;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+
+  /* ---------- struktur ---------- */
+  .cards{
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
+  }
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:30px 26px;
+    text-align:center;
+    transition:transform .18s, box-shadow .18s;
+  }
+  .card:hover{transform:translateY(-4px); box-shadow:0 12px 30px -12px #12121a2e;}
+  .avatar{
+    width:76px; height:76px; border-radius:50%;
+    margin:0 auto 18px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem;
+    border:2px dashed var(--ink);
+    opacity:.55;
+  }
+  .card:nth-child(1) .avatar{background:var(--yellow); border-style:solid; opacity:1;}
+  .card:nth-child(2) .avatar{background:var(--cyan); border-style:solid; opacity:1;}
+  .card:nth-child(3) .avatar{background:var(--red); border-style:solid; opacity:1; color:var(--paper);}
+  .card .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    opacity:.55; margin-bottom:6px;
+  }
+  .card .name{font-weight:600; font-size:1.15rem;}
+  @media (max-width:760px){.cards{grid-template-columns:1fr;}}
+
+  /* ---------- join cta ---------- */
+  .join{
+    max-width:1080px; margin:0 auto;
+    background:var(--ink); color:var(--paper);
+    border-radius:26px;
+    padding:60px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .join h2{font-size:clamp(1.6rem, 3.4vw, 2.3rem); margin-bottom:14px;}
+  .join p{opacity:.7; max-width:480px; margin:0 auto 30px;}
+  .join .btn-primary{background:var(--yellow); color:var(--ink);}
+  .join .btn-primary:hover{background:var(--paper);}
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:40px 28px;
+    text-align:center;
+  }
+  footer .brand{justify-content:center; margin-bottom:10px;}
+  footer p{font-size:.85rem; opacity:.55;}
+  footer a.wa{opacity:1; text-decoration:underline; font-weight:600;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="62" cy="20" r="14" fill="var(--yellow)" stroke="#12121A" stroke-width="3"/>
+        <path d="M46 34 H62 V56 H80 V72 H62 V86 C62 96 74 98 82 90" fill="none" stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      etiks
+    </div>
+    <div class="navlinks">
+      <a href="#tentang">Tentang</a>
+      <a href="#struktur">Struktur</a>
+      <a href="#gabung" class="nav-cta">Gabung</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="accent-orb orb-yellow"></div>
+  <div class="accent-orb orb-red"></div>
+
+  <div class="eyebrow" style="margin-bottom:18px;">Ekstrakurikuler TIK &middot; Smandagiri</div>
+
+  <div class="badge">
+    <span class="display">e<span style="position:relative;">t<span class="dot-t"></span></span>iks</span>
+  </div>
+
+  <h1 class="tagline">Belajar teknologi bukan cuma teori — di sini kita praktik langsung.</h1>
+  <p class="sub">ETIKS adalah wadah buat kamu yang penasaran sama dunia coding, desain, dan teknologi. Dari yang belum pernah ngoding sama sekali sampai yang udah punya proyek sendiri, semua belajar bareng di sini.</p>
+
+  <div class="cta-row">
+    <a href="#gabung" class="btn-primary">Gabung Sekarang →</a>
+    <a href="#tentang" class="btn-secondary">Kenalan Dulu</a>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="section-head">
+    <div class="eyebrow">Tentang</div>
+    <h2>Apa itu ETIKS?</h2>
+  </div>
+  <div class="about-grid">
+    <p>
+      ETIKS (Ekstra TIK Smandagiri) adalah ekstrakurikuler yang fokus di bidang teknologi informasi dan komunikasi. Kami jadi tempat buat anak-anak yang suka utak-atik komputer, tertarik sama dunia digital, atau sekadar penasaran gimana caranya bikin website, aplikasi, sampai konten kreatif — untuk berkumpul, belajar, dan bikin karya bareng-bareng.
+    </p>
+    <div class="stat-row">
+      <div class="stat">
+        <b>Terbuka</b>
+        <span>Buat semua tingkat, dari pemula sampai yang udah jago</span>
+      </div>
+      <div class="stat">
+        <b>Praktik</b>
+        <span>Belajar langsung lewat proyek, bukan cuma teori di kelas</span>
+      </div>
+      <div class="stat">
+        <b>Kolaboratif</b>
+        <span>Kerja bareng lintas minat: coding, desain, sampai konten</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="struktur" class="alt">
+  <div class="section-head">
+    <div class="eyebrow">Struktur Pengurus</div>
+    <h2>Yang menjalankan ETIKS</h2>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="avatar">K</div>
+      <div class="role">Ketua</div>
+      <div class="name">[Nama Ketua]</div>
+    </div>
+    <div class="card">
+      <div class="avatar">W</div>
+      <div class="role">Wakil Ketua</div>
+      <div class="name">[Nama Wakil Ketua]</div>
+    </div>
+    <div class="card">
+      <div class="avatar">S</div>
+      <div class="role">Sekretaris</div>
+      <div class="name">[Nama Sekretaris]</div>
+    </div>
+  </div>
+</section>
+
+<section id="gabung">
+  <div class="join">
+    <h2>Siap gabung ETIKS?</h2>
+    <p>Chat kami di WhatsApp buat info pendaftaran, jadwal kegiatan, dan pertanyaan lainnya.</p>
+    <!-- Ganti nomor di bawah dengan nomor WA ETIKS (format: 628xxxxxxxxxx, tanpa spasi/strip/plus) -->
+    <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn-primary">Join via WhatsApp →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+      <circle cx="62" cy="20" r="14" fill="#E4FF2E" stroke="#12121A" stroke-width="3"/>
+      <path d="M46 34 H62 V56 H80 V72 H62 V86 C62 96 74 98 82 90" fill="none" stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    etiks
+  </div>
+  <p>Ekstra TIK Smandagiri &middot; <a class="wa" href="https://wa.me/628XXXXXXXXXX" target="_blank">Hubungi via WhatsApp</a></p>
+  <p style="margin-top:8px;">&copy; 2026 ETIKS</p>
+</footer>
+
+</body>
+</html>
