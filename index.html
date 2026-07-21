@@ -130,8 +130,8 @@
     border:2px solid var(--ink);
     border-radius:50%;
     position:absolute;
-    left:35%;
-    top:-0.15em;
+    left:58%;
+    top:0.05em;
     transform:translateX(-50%);
   }
   .hero h1.tagline{
@@ -244,13 +244,14 @@
     padding:10px;
     margin-bottom:22px;
   }
-  .social-island a{
+  .social-island a, .social-island button{
     width:42px; height:42px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     background:var(--ink); color:var(--paper);
     transition:transform .15s, background .15s;
+    border:none; cursor:pointer; padding:0;
   }
-  .social-island a:hover{transform:translateY(-2px); background:var(--blue);}
+  .social-island a:hover, .social-island button:hover{transform:translateY(-2px); background:var(--blue);}
   .social-island svg{width:20px; height:20px;}
 
   /* ---------- join modal ---------- */
@@ -427,9 +428,9 @@
     etiks
   </div>
   <div class="social-island">
-    <a href="https://wa.me/6282134520880" target="_blank" aria-label="WhatsApp ETIKS">
+    <button type="button" id="footerWaBtn" aria-label="WhatsApp ETIKS">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.2.29-.76.94-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.71-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51-.17-.01-.37-.01-.56-.01-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/><path d="M12.02 2C6.5 2 2.02 6.48 2.02 12c0 1.87.51 3.63 1.4 5.13L2 22l4.99-1.31A9.96 9.96 0 0 0 12.02 22C17.55 22 22.02 17.52 22.02 12S17.55 2 12.02 2zm0 18.13c-1.68 0-3.24-.48-4.56-1.32l-.33-.2-3.02.79.81-2.94-.21-.34a8.13 8.13 0 0 1-1.24-4.32c0-4.5 3.66-8.16 8.15-8.16 4.5 0 8.15 3.66 8.15 8.16 0 4.5-3.66 8.13-8.15 8.13z"/></svg>
-    </a>
+    </button>
     <a href="https://instagram.com/etikssmandagiri" target="_blank" aria-label="Instagram ETIKS">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1"/></svg>
     </a>
@@ -454,7 +455,7 @@
 
     <label class="checkbox-row">
       <input type="checkbox" id="joinAgree">
-      <span>Saya sudah memahami ketentuan mengikuti ETIKS dan bersedia mendaftar ke ETIKS.</span>
+      <span>Saya siap mengikuti ETIKS SMANDA</span>
     </label>
 
     <button type="button" class="btn-apply" id="joinApplyBtn" disabled>Ajukan</button>
@@ -464,6 +465,7 @@
 <script>
   const overlay = document.getElementById('joinModalOverlay');
   const openBtn = document.getElementById('openJoinModal');
+  const footerWaBtn = document.getElementById('footerWaBtn');
   const closeBtn = document.getElementById('closeJoinModal');
   const namaInput = document.getElementById('joinNama');
   const kelasInput = document.getElementById('joinKelas');
@@ -484,6 +486,7 @@
   }
 
   openBtn.addEventListener('click', openModal);
+  footerWaBtn.addEventListener('click', openModal);
   closeBtn.addEventListener('click', closeModal);
   overlay.addEventListener('click', (e) => {
     if(e.target === overlay) closeModal();
@@ -495,7 +498,7 @@
   applyBtn.addEventListener('click', () => {
     const nama = namaInput.value.trim();
     const kelas = kelasInput.value.trim();
-    const pesan = `Halo, Saya ${nama} dari kelas ${kelas} ingin mendaftar ekstra TIK Smandagiri.`;
+    const pesan = `Halo, Saya ${nama} dari kelas ${kelas} ingin mendaftar ekstra tik smanda`;
     const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`;
     window.open(url, '_blank');
     closeModal();
