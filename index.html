@@ -454,7 +454,7 @@
 
     <label class="checkbox-row">
       <input type="checkbox" id="joinAgree">
-      <span>Saya siap mengikuti ETIKS SMANDA</span>
+      <span>Saya sudah memahami ketentuan mengikuti ETIKS dan bersedia mendaftar ke ETIKS.</span>
     </label>
 
     <button type="button" class="btn-apply" id="joinApplyBtn" disabled>Ajukan</button>
@@ -495,7 +495,7 @@
   applyBtn.addEventListener('click', () => {
     const nama = namaInput.value.trim();
     const kelas = kelasInput.value.trim();
-    const pesan = `Halo, Saya ${nama} dari kelas ${kelas} ingin mendaftar ekstra tik smanda`;
+    const pesan = `Halo, Saya ${nama} dari kelas ${kelas} ingin mendaftar ekstra TIK Smandagiri.`;
     const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`;
     window.open(url, '_blank');
     closeModal();
